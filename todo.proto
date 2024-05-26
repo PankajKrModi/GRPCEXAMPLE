@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package todoPackage;
+
+service Todo {
+
+    rpc createTodo(TodoItem) returns ( TodoItem );
+    rpc readTodos(voidNoParams) returns (TodoItems);
+    rpc readTodosStream(voidNoParams) returns (stream TodoItem);
+
+}
+
+message voidNoParams{} //protobuf always take some input params for method
+
+message TodoItem{
+    int32 id = 1;
+    string text = 2;
+}
+
+message TodoItems{
+    repeated TodoItem items = 1; //repeated is like arrays
+}
